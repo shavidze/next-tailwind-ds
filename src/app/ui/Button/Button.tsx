@@ -11,13 +11,24 @@ const buttonStyles = cva(
           'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 focus:ring-gray-500',
         danger: 'bg-red-500 text-white focus:ring-red-500',
       },
+      outline: {
+        true: 'bg-transparent border',
+      },
       fullWidth: {
         true: 'w-full',
       },
     },
     defaultVariants: {
       intent: 'primary',
+      fullWidth: false,
     },
+    compoundVariants: [
+      {
+        intent: ['primary', 'danger'],
+        outline: true,
+        class: 'border-red-500 text-red-500',
+      },
+    ],
   }
 );
 
@@ -25,8 +36,11 @@ export interface Props
   extends ButtonOrLinkProps,
     VariantProps<typeof buttonStyles> {}
 
-export function Button({ intent, fullWidth, ...props }: Props) {
+export function Button({ intent, fullWidth, outline, ...props }: Props) {
   return (
-    <ButtonOrLink className={buttonStyles({ intent, fullWidth })} {...props} />
+    <ButtonOrLink
+      className={buttonStyles({ intent, outline, fullWidth })}
+      {...props}
+    />
   );
 }

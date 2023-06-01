@@ -10,6 +10,9 @@ export default {
     fullWidth: {
       type: 'boolean',
     },
+    outline: {
+      type: 'boolean',
+    },
   },
 } as Meta<typeof Button>;
 
