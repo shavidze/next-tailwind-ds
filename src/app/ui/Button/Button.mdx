@@ -1,0 +1,26 @@
+{/* Button.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+
+## Test GFM plugin
+
+`Here` is a list of our task:
+ * [x] This is done
+ * [ ] This should be done
+
+# Button
+
+A Button is a square box that can be activated or deactivated when ticked.
+
+Use Buttones to select one or more options from a list of choices.
+
+<Canvas of={ButtonStories.Primary} />
+<Canvas of={ButtonStories.Secondary} />
+<Canvas of={ButtonStories.Danger} />
+
+

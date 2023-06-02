@@ -1,11 +1,27 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';
 
 export default {
   title: 'UI/Button',
   component: Button,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '4em' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    backgrounds: {
+      values: [
+        { name: 'red', value: '#f00' },
+        { name: 'green', value: '#0f0' },
+        { name: 'blue', value: '#00f' },
+      ],
+    },
+  },
   argTypes: {
     fullWidth: {
       type: 'boolean',
@@ -13,24 +29,52 @@ export default {
     outline: {
       type: 'boolean',
     },
+    label: {
+      options: ['Normal', 'Bold', 'Italic'],
+      mapping: {
+        Bold: <b>Bolda</b>,
+        Italic: <i>Italic</i>,
+      },
+    },
+  },
+  args: {
+    fullWidth: true,
+    label: {},
   },
 } as Meta<typeof Button>;
+type Story = StoryObj<typeof Button>;
 
-const Template: StoryFn<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
-);
-
-export const Primary = Template.bind({});
-Primary.args = {
-  intent: 'primary',
+export const Primary: Story = {
+  loaders: [
+    async () => ({
+      todo: await (
+        await fetch('https://jsonplaceholder.typicode.com/todos/1')
+      ).json(),
+    }),
+  ],
+  args: {
+    intent: 'primary',
+    children: 'Click Me',
+  },
+  decorators: [
+    (Story) => (
+      <div className="p-8">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  intent: 'secondary',
+export const Secondary: Story = {
+  args: {
+    ...Primary.args,
+    intent: 'secondary',
+  },
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-  intent: 'danger',
+export const Danger: Story = {
+  args: {
+    ...Primary.args,
+    intent: 'danger',
+  },
 };
