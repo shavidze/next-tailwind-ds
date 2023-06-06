@@ -7,5 +7,11 @@ const textStyles = cva([], {
       medium: 'text-md',
       large: 'text-lg',
     },
+    weight: {
+      light: 'font-light',
+      normal: 'font-medium',
+      semibold: 'font-semibold',
+      bold: 'font-bold',
+    },
   },
 });
