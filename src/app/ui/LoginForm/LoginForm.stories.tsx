@@ -7,7 +7,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import LoginForm from './LoginForm';
 
 const meta: Meta<typeof LoginForm> = {
-  title: 'Design System/Atoms/LoginForm',
+  title: 'UI/LoginForm',
   component: LoginForm,
 };
 
