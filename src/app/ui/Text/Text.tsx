@@ -20,7 +20,7 @@ const textStyles = cva([], {
 type TextStylesProps = VariantProps<typeof textStyles>;
 
 export interface TextProps extends Omit<TextStylesProps, 'size' | 'weigth'> {
-  variant: `${NonNullable<TextStylesProps['size']>} / ${NonNullable<
+  variant: `${NonNullable<TextStylesProps['size']>}/${NonNullable<
     TextStylesProps['weight']
   >}`;
   children?: ReactNode;
