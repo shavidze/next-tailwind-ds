@@ -1,26 +1,56 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Text } from './Text';
+/* eslint-disable import/no-extraneous-dependencies */
+import { Meta } from '@storybook/react';
+import { Text, type TextProps } from './Text';
 
 export default {
   title: 'UI/Text',
   component: Text,
-  decorators: [
-    (Story) => (
-      <div className="p-8">
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    intent: 'small/bold',
-    children: 'Hello, This is a text',
-  },
+  args: {},
 } as Meta<typeof Text>;
-type Story = StoryObj<typeof Text>;
-
-export const TextSmallAndBold: Story = {
+type StoryProps = {
+  variants: TextProps['variant'][];
+};
+export const Small = {
+  render: ({ variants }: StoryProps) => (
+    <div>
+      {variants.map((variant) => (
+        <Text variant={variant} key={variant}>
+          {variant}
+        </Text>
+      ))}
+    </div>
+  ),
   args: {
-    variant: 'small/bold',
-    children: 'Smal and Bold Text',
+    variants: ['small/light', 'small/normal', 'small/semibold'],
+  },
+};
+
+export const Medium = {
+  render: ({ variants }: StoryProps) => (
+    <div>
+      {variants.map((variant) => (
+        <Text variant={variant} key={variant}>
+          {variant}
+        </Text>
+      ))}
+    </div>
+  ),
+  args: {
+    variants: ['medium/light', 'medium/normal', 'medium/semibold'],
+  },
+};
+
+export const Large = {
+  render: ({ variants }: StoryProps) => (
+    <div>
+      {variants.map((variant) => (
+        <Text variant={variant} key={variant}>
+          {variant}
+        </Text>
+      ))}
+    </div>
+  ),
+  args: {
+    variants: ['large/light', 'large/normal', 'large/semibold'],
   },
 };
