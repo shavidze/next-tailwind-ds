@@ -1,0 +1,13 @@
+.icon-wrapper {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  overflow: hidden;
+}
+
+.icon-left {
+  left: 0;
+}
+
+.icon-right {
+  left: 100%;
+}
