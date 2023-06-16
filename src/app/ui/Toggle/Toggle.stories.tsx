@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Meta, StoryObj } from '@storybook/react';
-import { Toggle } from './Toggle';
+import Toggle from './Toggle';
 
 export default {
   title: 'UI/Toggle',
